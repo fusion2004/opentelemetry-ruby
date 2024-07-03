@@ -154,7 +154,7 @@ module OpenTelemetry
               response = measure_request_duration { @http.request(request) }
 
               case response
-              when Net::HTTPOK
+              when Net::HTTPAccepted, Net::HTTPOK
                 response.body # Read and discard body
                 SUCCESS
               when Net::HTTPServiceUnavailable, Net::HTTPTooManyRequests
